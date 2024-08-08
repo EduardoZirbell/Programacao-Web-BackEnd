@@ -21,8 +21,8 @@ model Users {
 
 model Products{
    id Int @id @default(autoincrement())
-   createAt DateTime @default(now())
-   updateAt DateTime @updatedAt
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
    title String
    description String?
    price Float
