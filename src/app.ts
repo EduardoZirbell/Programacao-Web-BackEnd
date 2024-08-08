@@ -17,22 +17,19 @@ server.register(fjwt, {
     secret: 'teste',
 });
 
-async function main() {
 
-    for (const schema of userSchemas) {
-        server.addSchema(schema);
-    }
 
-    server.register(userRoutes, { prefix: 'api/users' })
-
-    try {
-        await server.listen({ port: 3000, host: '0.0.0.0' }, (err, address) => {
-            console.log(`Server listening at ${address}`)
-        })
-    } catch (e) {
-        console.error(e);
-        process.exit(1);
-    }
+for (const schema of userSchemas) {
+    server.addSchema(schema);
 }
 
-main();
+server.register(userRoutes, { prefix: 'api/users' })
+
+server.listen({ port: 3000 }, (err, address) => {
+    if (err) {
+        console.error(err);
+        process.exit(1);
+    }
+    console.log(`Server listening at ${address}`)
+});
+
