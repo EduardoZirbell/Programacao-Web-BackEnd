@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Usuários</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>João Silva</td>
+                    <td>joao.silva@email.com</td>
+                </tr>
+                <tr>
+                    <td>Maria Oliveira</td>
+                    <td>maria.oliveira@email.com</td>
+                </tr>
+                <tr>
+                    <td>Carlos Santos</td>
+                    <td>carlos.santos@email.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
