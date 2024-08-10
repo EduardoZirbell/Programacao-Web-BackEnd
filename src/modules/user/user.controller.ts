@@ -16,8 +16,9 @@ export async function registerUserHandler(
         const user = await createUser(body);
         return reply.code(201).send(user);
     } catch (e) {
-        console.log(e);
-        return reply.code(500);
+        return reply.code(500).send(
+            { message: e }
+        );
     }
 }
 
@@ -49,7 +50,7 @@ export async function loginHandler(request: FastifyRequest<{ Body: LoginInput }>
     }
 };
 
-export async function getUsersHandler(){
+export async function getUsersHandler() {
     const users = await findUsers();
     return users;
 };

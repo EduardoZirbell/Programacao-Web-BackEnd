@@ -11,12 +11,12 @@ export async function createUser(input: CreateUserInput) {
 
     const user = await prisma.users.findFirst({ where: { email } });
     if (user) {
-        throw ("O email já está sendo usado.");
+        throw ('Email já está sendo usado.');
     }
     const newUser = await prisma.users.create({
         data: { ...rest, salt, password: hash },
     });
-
+    
     return newUser;
 };
 

@@ -3,12 +3,17 @@ import fjwt from '@fastify/jwt';
 import swagger from '@fastify/swagger';
 import { withRefResolver } from "fastify-zod";
 import userRoutes from "./modules/user/user.route";
-import productRoutes from "./modules/product/product.route";
+import studentRoutes from "./modules/student/student.route";
 import { userSchemas } from './modules/user/user.schema';
-import { productSchemas } from './modules/product/product.schema';
+import { studentSchemas } from './modules/student/student.schema';
 import { version } from '../package.json'
+import cors from "@fastify/cors";
 
 export const server = Fastify();
+
+server.register(cors, {
+    origin: '*',
+});
 
 declare module 'fastify' {
     export interface FastifyInstance {
@@ -38,7 +43,7 @@ server.register(fjwt, {
     secret: 'teste',
 });
 
-for (const schema of userSchemas) {
+for (const schema of [...userSchemas, ...studentSchemas]) {
     server.addSchema(schema);
 };
 
@@ -56,9 +61,7 @@ server.register(
 )
 
 server.register(userRoutes, { prefix: 'api/users' })
-server.register(productRoutes, { prefix: 'api/products' })
-
-// server.register(productRoutes, { prefix: 'api/product' })
+server.register(studentRoutes, { prefix: 'api/students' })
 
 server.listen({ port: 3000 }, (err, address) => {
     if (err) {

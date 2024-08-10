@@ -16,16 +16,12 @@ model Users {
   name String
   password String
   salt String
-  products Products[]
 }
 
-model Products{
+model Students{
    id Int @id @default(autoincrement())
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
-   title String
-   description String?
-   price Float
-   owner Users @relation(fields: [ownerId], references: [id])
-   ownerId Int
+   name String
+   phone String
 }
