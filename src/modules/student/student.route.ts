@@ -3,7 +3,7 @@ import { createStudentHandler, getStudentsHandler } from "./student.controller";
 import { $ref } from "./student.schema";
 
 async function studentRoutes(server: FastifyInstance) {
-    server.post('/create', {
+    server.post('/createStudent', {
         preHandler: [server.authenticate],
         schema: {
             body: $ref('createStudentSchema'),
@@ -13,7 +13,7 @@ async function studentRoutes(server: FastifyInstance) {
         }
     }, createStudentHandler);
 
-    server.get('/liststudents', {
+    server.get('/listStudents', {
         schema: {
             response: {
                 200: $ref('studentsResponseSchema')
