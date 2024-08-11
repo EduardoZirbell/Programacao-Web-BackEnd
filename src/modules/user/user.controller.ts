@@ -14,9 +14,9 @@ export async function registerUserHandler(
 
     try {
         const user = await createUser(body);
-        return reply.code(201).send(user);
+        return reply.code(200).send(user);
     } catch (e) {
-        return reply.code(500).send(
+        return reply.code(400).send(
             { message: e }
         );
     }
@@ -28,8 +28,8 @@ export async function loginHandler(request: FastifyRequest<{ Body: LoginInput }>
     const user = await findUserByEmail(body.email)
 
     if (!user) {
-        return reply.code(401).send({
-            message: 'Email ou senha inválidos.'
+        return reply.code(400).send({
+            message: 'Invalid email or password.'
         })
     }
 
@@ -44,8 +44,8 @@ export async function loginHandler(request: FastifyRequest<{ Body: LoginInput }>
 
         return { acessToken: server.jwt.sign(rest) }
     } else {
-        return reply.code(401).send({
-            message: 'Email ou senha inválidos.'
+        return reply.code(400).send({
+            message: 'Invalid email or password.'
         })
     }
 };

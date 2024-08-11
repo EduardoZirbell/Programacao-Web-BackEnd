@@ -2,8 +2,14 @@ import { z } from 'zod';
 import { buildJsonSchemas } from 'fastify-zod';
 
 const studentInput = {
-    name: z.string(),
-    phone: z.string(),
+    name: z.string({
+        required_error: "Name it's necessary",
+        invalid_type_error: 'Name must be a string.'
+    }),
+    phone: z.string({
+        required_error: "Phone it's necessary.",
+        invalid_type_error: 'Phone must be a string.'
+    }),
 };
 
 const studentGenerated = {
@@ -29,5 +35,5 @@ export const { schemas: studentSchemas, $ref } = buildJsonSchemas({
     createStudentSchema,
     studentResponseSchema,
     studentsResponseSchema,
-}, { $id: 'studentsResponseSchema' } );
+}, { $id: 'studentsResponseSchema' });
 

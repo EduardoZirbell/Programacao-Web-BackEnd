@@ -8,7 +8,7 @@ async function studentRoutes(server: FastifyInstance) {
         schema: {
             body: $ref('createStudentSchema'),
             response: {
-                201: $ref('studentResponseSchema')
+                200: $ref('studentResponseSchema')
             }
         }
     }, createStudentHandler);
