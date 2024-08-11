@@ -2,9 +2,15 @@ import prisma from "../../utils/prisma";
 import { CreateStudentInput } from "./student.schema";
 
 export async function createStudent(data: CreateStudentInput) {
-    return prisma.students.create({
-        data,
-    })
+    if (data.name == '') {
+        throw ('Name is required.');
+    } if (data.phone == '') {
+        throw ('Phone is required.');
+    } else {
+        return prisma.students.create({
+            data
+        })
+    }
 }
 
 export async function getStudents() {

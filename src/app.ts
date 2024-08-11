@@ -63,7 +63,7 @@ server.register(
 server.register(userRoutes, { prefix: 'api/users' })
 server.register(studentRoutes, { prefix: 'api/students' })
 
-server.listen({ port: 3000 }, (err, address) => {
+server.listen({ port: 5555 }, (err, address) => {
     if (err) {
         console.error(err);
         process.exit(1);

@@ -11,7 +11,7 @@ export async function createUser(input: CreateUserInput) {
 
     const user = await prisma.users.findFirst({ where: { email } });
     if (user) {
-        throw ('Email já está sendo usado.');
+        throw ('Email is already been used.');
     }
     const newUser = await prisma.users.create({
         data: { ...rest, salt, password: hash },
